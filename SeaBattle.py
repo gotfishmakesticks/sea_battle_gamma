@@ -11,7 +11,7 @@ frame_main = tk.Frame(root)
 frame_main.grid()
 
 # Словарь букв для поля
-letters = {0: ' ', 1: 'А', 2: 'Б', 3: 'В', 4: 'Г', 5: 'Д', 6: 'Е', 7: 'Ж', 8: 'З', 9: 'И', 10: 'К'}
+letters = {1: 'А', 2: 'Б', 3: 'В', 4: 'Г', 5: 'Д', 6: 'Е', 7: 'Ж', 8: 'З', 9: 'И', 10: 'К'}
 
 
 
@@ -30,8 +30,9 @@ btn_user_list = []
 for row in range(11):
     for column in range(11):
         if row == 0:
-            # Выводим буквы по горизонтали
-            tk.Label(frame_user, text=f'{letters[column]}').grid(row=row, column=column)
+            if column >= 1:
+                # Выводим буквы по горизонтали
+                tk.Label(frame_user, text=f'{column}').grid(row=row, column=column)
         else:
             if column == 0:
                 # Выводм буквы по вертикали
@@ -59,8 +60,9 @@ btn_bot_dict, btn_key = {}, 0
 for row in range(11):
     for column in range(11):
         if row == 0:
-            # Заполяем буквы по горизонтали
-            tk.Label(frame_bot, text=f'{letters[column]}').grid(row=row, column=column)
+            if column >= 1:
+                # Выводим буквы по горизонтали
+                tk.Label(frame_bot, text=f'{column}').grid(row=row, column=column)
         else:
             if column == 0:
                 # Заполняем буквы по вертикали
