@@ -1,4 +1,4 @@
-import tkinter as tk
+'''import tkinter as tk
 
 
 # Создание формы
@@ -70,7 +70,7 @@ for row in range(11):
 
 '''Начало'''
 
-check = True
+
 
 # Обработчик кнопки для пройденной атаки
 def attack(btn):
@@ -87,4 +87,4 @@ def attack(btn):
 
 
 
-root.mainloop()
+root.mainloop()'''
