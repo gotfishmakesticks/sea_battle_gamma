@@ -1,5 +1,5 @@
 from tkinter import *
-
+check = True
 class Field:
 
     def __init__(self, win, row, column, state):
