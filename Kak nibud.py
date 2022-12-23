@@ -1,10 +1,13 @@
 from tkinter import *
 
+root = Tk()
+
+check = True
 class Field:
 
     def __init__(self, win, row, column, state):
-        frame = Frame(win)
-        frame.grid(row=row, column=column, padx=10, pady=10)
+        self.frame = Frame(win)
+        self.frame.grid(row=row, column=column, padx=10, pady=10)
 
         # Словарь кнопок
         btn_dict, btn_key = {}, 0
@@ -17,42 +20,36 @@ class Field:
                 if row == 0:
                     if column >= 1:
                         # Выводим буквы по горизонтали
-                        Label(frame, text=f'{column}').grid(row=row, column=column)
+                        Label(self.frame, text=f'{column}').grid(row=row, column=column)
                 else:
                     if column == 0:
                         # Заполняем буквы по вертикали
-                        Label(frame, text=f'{letters[row]}').grid(row=row, column=column)
+                        Label(self.frame, text=f'{letters[row]}').grid(row=row, column=column)
                     else:
                         # Создаём кнопку и помещаем её в словарь
-                        btn_dict[btn_key] = Button(frame, width=4, height=2, state=state, command=lambda btn=btn_key: self.attack(btn_dict[btn]))
+                        btn_dict[btn_key] = Button(self.frame, width=4, height=2, state=state, command=lambda btn=btn_key: self.attack(btn_dict[btn]))
                         btn_dict[btn_key].grid(row=row, column=column)
                         btn_key += 1
 
     # Обработчик кнопки для пройденной атаки
     def attack(self, btn):
         global check
+        btn_key = 1
         btn['text'] = '*'
         btn['state'] = 'disabled'
-        if check:
+        print(self.frame["column"])
+        if check == True:
+            #print("Test")
+            for row in range(11):
+                for column in range(11):
+                    if row >= 1 & column >= 1:
+                        btn["state"] = "active"
+                        # btn_dict[btn_key].grid(row=row, column=column)
             check = False
         else:
+            #print("Test Not")
             check = True
 
-root = Tk()
 f1, f2 = Field(root, 0, 0, "disabled"), Field(root, 0, 1, "active")
 
-
-check = True
-
-if check:
-    for row in range(11):
-        for column in range(11):
-            if row >= 1 & column>=1:
-                btn_dict, btn_key = {}, 0
-                btn_dict[btn_key] = state="active"
-                # btn_dict[btn_key].grid(row=row, column=column)
-                # btn_key += 1
-else:
-    f1["state"] = "disabled"
-    f2["state"] = "active"
 root.mainloop()
